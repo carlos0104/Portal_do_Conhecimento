@@ -1,0 +1,46 @@
+# Portal do Conhecimento — repositorio PUBLICO.
+# Nada de acervo, arquivo pessoal ou segredo aqui dentro.
+
+# --- Acervo e material de leitura (nunca commitar) ---
+*.pdf
+*.docx
+*.doc
+*.epub
+*.mobi
+*.azw3
+*.djvu
+/biblioteca/
+/acervo/
+/livros/
+
+# --- Segredos e configuracao local ---
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+secrets.json
+config.local.js
+
+# --- Sistema operacional / OneDrive ---
+Thumbs.db
+ehthumbs.db
+desktop.ini
+Desktop.ini
+*.lnk
+~$*
+.DS_Store
+
+# --- Editores e ferramentas ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Temporarios e saidas de validacao ---
+node_modules/
+tmp/
+temp/
+/scratch/
+*.log
+*.tmp
+*.bak
