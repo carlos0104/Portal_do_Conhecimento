@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portal pessoal de estudos: trilhas, biblioteca, leitura ativa e revisao espacada.">
+<meta name="color-scheme" content="light dark">
+<title>Portal do Conhecimento</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 32 32%22%3E%3Cpolygon points%3D%2228.40%2C19.50 23.92%2C21.62 26.74%2C25.70 21.80%2C25.30 22.20%2C30.24 18.12%2C27.42 16.00%2C31.90 13.88%2C27.42 9.80%2C30.24 10.20%2C25.30 5.26%2C25.70 8.08%2C21.62 3.60%2C19.50 8.08%2C17.38 5.26%2C13.30 10.20%2C13.70 21.80%2C13.70 26.74%2C13.30 23.92%2C17.38%22 fill%3D%22%232f8a45%22%2F%3E%3Ccircle cx%3D%2216%22 cy%3D%2219.5%22 r%3D%228.5%22 fill%3D%22%2357b45f%22%2F%3E%3Cpath d%3D%22M9.5 9.5v4.2c0 1.9 2.9 3.1 6.5 3.1s6.5-1.2 6.5-3.1V9.5z%22 fill%3D%22%23c9922a%22%2F%3E%3Cpolygon points%3D%2216%2C3 30%2C8 16%2C13 2%2C8%22 fill%3D%22%23f2c14e%22%2F%3E%3Cpath d%3D%22M29 8.4v4.6%22 stroke%3D%22%23c9922a%22 stroke-width%3D%221.4%22 stroke-linecap%3D%22round%22 fill%3D%22none%22%2F%3E%3Ccircle cx%3D%2229%22 cy%3D%2214.2%22 r%3D%221.5%22 fill%3D%22%23c9922a%22%2F%3E%3Ccircle cx%3D%2212.6%22 cy%3D%2219.6%22 r%3D%221.7%22 fill%3D%22%2314301c%22%2F%3E%3Ccircle cx%3D%2219.4%22 cy%3D%2219.6%22 r%3D%221.7%22 fill%3D%22%2314301c%22%2F%3E%3Cpath d%3D%22M11.8 23.2c1.4 2 6.9 2 8.4 0%22 stroke%3D%22%2314301c%22 stroke-width%3D%221.5%22 stroke-linecap%3D%22round%22 fill%3D%22none%22%2F%3E%3Cpolygon points%3D%2213.2%2C23.9 14.6%2C23.9 13.9%2C26%22 fill%3D%22%23f2c14e%22%2F%3E%3Cpolygon points%3D%2217.4%2C23.9 18.8%2C23.9 18.1%2C26%22 fill%3D%22%23f2c14e%22%2F%3E%3C%2Fsvg%3E">
+<script>
+/* Aplica o tema salvo antes da primeira pintura, para nao piscar branco no tema escuro. */
+(function () {
+  try {
+    var bruto = window.localStorage.getItem("pdc.config");
+    var tema = bruto ? (JSON.parse(bruto).tema || "auto") : "auto";
+    document.documentElement.setAttribute("data-tema", tema);
+  } catch (e) {
+    document.documentElement.setAttribute("data-tema", "auto");
+  }
+})();
+</script>
+</head>
+<body>
+
+<noscript>
+  <div style="padding:24px">
+    <h1>Portal do Conhecimento</h1>
+    <p>Este portal precisa de JavaScript para funcionar. Ative o JavaScript no navegador e recarregue a pagina.</p>
+  </div>
+</noscript>
+
+<!-- ORDEM DE CARREGAMENTO OBRIGATORIA (docs/ARQUITETURA.md §1.1).
+     Um arquivo so pode usar PDC.x de arquivos que vem antes dele.
+     Os modulos comentados entram nas etapas indicadas. -->
+<script src="js/core.js"></script>          <!-- PDC.icones, PDC.util, PDC.rota, PDC.estado -->
+<script src="js/db.js"></script>            <!-- PDC.db -->
+<script src="js/ui.js"></script>            <!-- PDC.ui -->
+<!-- <script src="js/trilhas/dados.js"></script>          Etapa 6 -->
+<!-- <script src="js/trilhas/engenharia.js"></script>     Etapa 6 -->
+<!-- <script src="js/trilhas/gestao.js"></script>         Etapa 6 -->
+<!-- <script src="js/trilhas/lideranca.js"></script>      Etapa 6 -->
+<!-- <script src="js/trilhas/desenvolvimento.js"></script> Etapa 6 -->
+<!-- <script src="js/exercicios.js"></script>             Etapa 7 -->
+<!-- <script src="js/biblioteca.js"></script>             Etapa 8 -->
+<!-- <script src="js/leitor.js"></script>                 Etapa 9 -->
+<!-- <script src="js/compreensao.js"></script>            Etapa 10 -->
+<!-- <script src="js/fixacao.js"></script>                Etapa 11 -->
+<!-- <script src="js/gerador.js"></script>                Etapa 12 -->
+<script src="js/app.js"></script>           <!-- sempre por ultimo -->
+
+</body>
+</html>
