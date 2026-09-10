@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amostra do design system — Portal do Conhecimento</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-marca">
+      <span id="marca-ico"></span>
+      <span class="rotulo">Portal do Conhecimento</span>
+    </div>
+    <div class="sidebar-secao">Navegacao</div>
+    <button class="nav-item ativo" type="button"><span data-ico="casa"></span><span class="rotulo">Inicio</span></button>
+    <button class="nav-item" type="button"><span data-ico="livro"></span><span class="rotulo">Biblioteca</span></button>
+    <button class="nav-item" type="button"><span data-ico="cartao"></span><span class="rotulo">Revisao do dia</span></button>
+    <button class="nav-item" type="button"><span data-ico="usuario"></span><span class="rotulo">Minha area</span></button>
+    <button class="nav-item" type="button"><span data-ico="config"></span><span class="rotulo">Configuracoes</span></button>
+    <div class="sidebar-secao">Trilha atual</div>
+    <button class="nav-item" type="button"><span data-ico="fase"></span><span class="rotulo">Fase 3 — Inferencia</span></button>
+    <button class="nav-item" type="button"><span data-ico="modulo"></span><span class="rotulo">8. Testes de hipotese</span></button>
+  </aside>
+
+  <div class="principal">
+
+    <header class="topbar">
+      <button class="btn btn-sutil btn-icone" type="button" id="btn-menu" aria-label="Abrir menu"><span data-ico="menu"></span></button>
+      <span class="titulo">Amostra do design system</span>
+      <span class="espaco"></span>
+      <span class="salvo ativo"><span data-ico="check"></span><span class="rotulo-salvo">progresso salvo</span></span>
+      <button class="btn btn-secundario btn-pequeno" type="button" id="btn-tema"><span data-ico="lua"></span> <span id="tema-rotulo">Tema: auto</span></button>
+    </header>
+
+    <main class="conteudo">
+
+      <p class="aviso aviso-info mb-5">
+        <span data-ico="info"></span>
+        <span>Pagina de referencia visual da <strong>Etapa 3</strong>. Nao faz parte da aplicacao:
+        existe para conferir componentes, contraste e comportamento nos dois temas.</span>
+      </p>
+
+      <!-- TIPOGRAFIA -->
+      <h2 class="mb-4">Tipografia</h2>
+      <div class="cartao mb-5">
+        <h1>Titulo de pagina</h1>
+        <h2 class="mt-3">Titulo de secao</h2>
+        <h3 class="mt-3">Subtitulo</h3>
+        <p class="mt-3">Texto de interface, denso, em 14,5 px. Usado em listas, tabelas, formularios e paineis.</p>
+        <div class="aula mt-4">
+          <p>Texto de aula, em 16 px com entrelinha de 1,68 e largura maxima de 74 caracteres.
+          Essa medida existe porque linha longa cansa a leitura: o olho perde o inicio da linha seguinte.
+          Toda aula nativa do portal usa esta coluna.</p>
+          <p class="bloco-destaque">Bloco de destaque: a ideia central do trecho, o que precisa ficar depois que a aula acabar.</p>
+          <blockquote class="bloco-citacao">Trecho curto de terceiro, sempre com atribuicao.
+            <span class="fonte">Fonte: exemplo ilustrativo</span></blockquote>
+          <p>Codigo dentro do texto aparece como <code>df.groupby("uf")</code>, na fonte monoespacada do sistema.</p>
+        </div>
+      </div>
+
+      <!-- CORES -->
+      <h2 class="mb-4">Cores</h2>
+      <div class="cartao mb-5">
+        <h4 class="mb-3">Superficies e texto</h4>
+        <div class="grade grade-auto" id="amostra-base"></div>
+        <h4 class="mt-5 mb-3">Fases</h4>
+        <div class="grade grade-auto" id="amostra-fases"></div>
+        <h4 class="mt-5 mb-3">Trilhas</h4>
+        <div class="grade grade-auto" id="amostra-trilhas"></div>
+        <h4 class="mt-5 mb-3">Destaques de leitura</h4>
+        <p class="aula">
+          Texto com <span class="hl hl1">destaque amarelo</span>, <span class="hl hl2">destaque verde</span>,
+          <span class="hl hl3">destaque azul</span> e <span class="hl hl4">destaque rosa</span> — as quatro cores do leitor.
+        </p>
+      </div>
+
+      <!-- BOTOES -->
+      <h2 class="mb-4">Botoes e etiquetas</h2>
+      <div class="cartao mb-5">
+        <div class="linha mb-4" style="flex-wrap: wrap">
+          <button class="btn btn-primario" type="button"><span data-ico="play"></span> Primario</button>
+          <button class="btn btn-secundario" type="button">Secundario</button>
+          <button class="btn btn-sutil" type="button">Sutil</button>
+          <button class="btn btn-perigo" type="button"><span data-ico="lixeira"></span> Perigo</button>
+          <button class="btn btn-primario" type="button" disabled>Desabilitado</button>
+          <button class="btn btn-secundario btn-pequeno" type="button">Pequeno</button>
+          <button class="btn btn-secundario btn-icone" type="button" aria-label="Editar"><span data-ico="lapis"></span></button>
+        </div>
+        <div class="chips mb-4">
+          <button class="chip ativo" type="button">Todos</button>
+          <button class="chip" type="button">Portugues</button>
+          <button class="chip" type="button">Ingles</button>
+          <button class="chip" type="button">So o que baixa</button>
+        </div>
+        <div class="linha" style="flex-wrap: wrap">
+          <span class="etiq">neutra</span>
+          <span class="etiq etiq-acento">em andamento</span>
+          <span class="etiq etiq-ok">aprovado</span>
+          <span class="etiq etiq-aviso">pendente</span>
+          <span class="etiq etiq-erro">reprovado</span>
+          <span class="etiq etiq-auto">gerado automaticamente</span>
+        </div>
+      </div>
+
+      <!-- CARTOES E PROGRESSO -->
+      <h2 class="mb-4">Cartoes, progresso e estatisticas</h2>
+      <div class="grade grade-3 mb-4">
+        <article class="cartao cartao-clicavel fase-1">
+          <div class="cartao-faixa faixa-fase"></div>
+          <div class="cartao-cabeca">
+            <span data-ico="trilha"></span>
+            <div>
+              <div class="cartao-titulo">Ciencia de Dados</div>
+              <div class="cartao-sub">6 fases · 18 modulos · 560 h</div>
+            </div>
+          </div>
+          <div class="progresso-rotulo"><span>Progresso</span><span class="num">34%</span></div>
+          <div class="progresso"><div class="progresso-barra" style="width: 34%"></div></div>
+        </article>
+        <article class="cartao cartao-clicavel fase-2">
+          <div class="cartao-faixa faixa-fase"></div>
+          <div class="cartao-cabeca">
+            <span data-ico="banco"></span>
+            <div>
+              <div class="cartao-titulo">Engenharia de Dados</div>
+              <div class="cartao-sub">5 fases · 15 modulos · 400 h</div>
+            </div>
+          </div>
+          <div class="progresso-rotulo"><span>Progresso</span><span class="num">8%</span></div>
+          <div class="progresso"><div class="progresso-barra" style="width: 8%"></div></div>
+        </article>
+        <article class="cartao cartao-clicavel fase-4">
+          <div class="cartao-faixa faixa-fase"></div>
+          <div class="cartao-cabeca">
+            <span data-ico="usuario"></span>
+            <div>
+              <div class="cartao-titulo">Lideranca</div>
+              <div class="cartao-sub">4 fases · 12 modulos · 165 h</div>
+            </div>
+          </div>
+          <div class="progresso-rotulo"><span>Progresso</span><span class="num">0%</span></div>
+          <div class="progresso"><div class="progresso-barra" style="width: 0%"></div></div>
+        </article>
+      </div>
+      <div class="cartao mb-5">
+        <div class="stats">
+          <div class="stat"><div class="stat-valor num">34%</div><div class="stat-rotulo">Concluido</div></div>
+          <div class="stat"><div class="stat-valor num">190</div><div class="stat-rotulo">Horas feitas</div></div>
+          <div class="stat"><div class="stat-valor num">370</div><div class="stat-rotulo">Horas restantes</div></div>
+          <div class="stat"><div class="stat-valor num">31</div><div class="stat-rotulo">Semanas previstas</div></div>
+        </div>
+      </div>
+
+      <!-- AVISOS -->
+      <h2 class="mb-4">Avisos</h2>
+      <div class="coluna mb-5">
+        <div class="aviso aviso-info"><span data-ico="info"></span><span>Informacao neutra sobre o que esta acontecendo.</span></div>
+        <div class="aviso aviso-ok"><span data-ico="sucesso"></span><span>Exercicio aprovado. Modulo marcado como concluido.</span></div>
+        <div class="aviso aviso-atencao"><span data-ico="alerta"></span><span>Este PDF nao tem texto extraivel. Resumo, glossario e mapa mental ficam indisponiveis.</span></div>
+        <div class="aviso aviso-erro"><span data-ico="erro"></span><span>Nao foi possivel salvar. Verifique o espaco disponivel no navegador.</span></div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <h2 class="mb-4">Formulario</h2>
+      <div class="cartao mb-5">
+        <div class="grade grade-2">
+          <div>
+            <label class="campo">
+              <span class="campo-rotulo">Buscar livro</span>
+              <span class="busca"><span data-ico="busca"></span><input class="entrada" type="search" placeholder="titulo ou autor"></span>
+              <span class="campo-ajuda">Busca em Open Library, Internet Archive, Crossref e Google Books.</span>
+            </label>
+            <label class="campo">
+              <span class="campo-rotulo">Ritmo semanal</span>
+              <select class="selecao">
+                <option>9 horas por semana</option>
+                <option selected>12 horas por semana</option>
+                <option>16 horas por semana</option>
+                <option>20 horas por semana</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label class="campo">
+              <span class="campo-rotulo">Reflexao</span>
+              <textarea class="area" placeholder="Onde eu aplico isso no meu time?"></textarea>
+            </label>
+            <label class="marcacao"><input type="checkbox" checked> Marcar item como concluido</label>
+            <label class="marcacao"><input type="checkbox"> Mostrar so o que falta</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABAS, PAINEL, TABELA -->
+      <h2 class="mb-4">Abas, painel e tabela</h2>
+      <div class="cartao mb-5">
+        <div class="abas">
+          <button class="aba ativa" type="button">Resumo</button>
+          <button class="aba" type="button">Glossario</button>
+          <button class="aba" type="button">Mapa mental</button>
+          <button class="aba" type="button">Ficha de leitura</button>
+        </div>
+        <details class="painel" open>
+          <summary><span data-ico="documento"></span> Aula no portal <span class="seta" data-ico="baixo"></span></summary>
+          <div class="painel-corpo">
+            <p class="sem-margem">Painel aberto por padrao. A aula nativa e sempre a primeira coisa do modulo.</p>
+          </div>
+        </details>
+        <details class="painel">
+          <summary><span data-ico="externo"></span> Materiais de fontes confiaveis <span class="seta" data-ico="baixo"></span></summary>
+          <div class="painel-corpo">
+            <p class="sem-margem">Painel fechado por padrao.</p>
+          </div>
+        </details>
+        <div class="tabela-rolagem mt-4">
+          <table class="tabela">
+            <thead><tr><th>Modulo</th><th>Fase</th><th class="num">Horas</th><th class="num">Progresso</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>7. Probabilidade</td><td>F3</td><td class="num">30</td><td class="num">100%</td><td><span class="etiq etiq-ok">concluido</span></td></tr>
+              <tr><td>8. Testes de hipotese</td><td>F3</td><td class="num">30</td><td class="num">45%</td><td><span class="etiq etiq-acento">em andamento</span></td></tr>
+              <tr><td>9. Experimentacao e teste A/B</td><td>F3</td><td class="num">25</td><td class="num">0%</td><td><span class="etiq">nao iniciado</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EDITOR -->
+      <h2 class="mb-4">Editor e saida</h2>
+      <div class="grade grade-2 mb-5">
+        <div class="editor">
+          <div class="editor-barra"><span data-ico="codigo"></span> exercicio dados.m8.e1 — Python<span class="espaco"></span><span>Ctrl+Enter executa</span></div>
+          <textarea class="editor-area" spellcheck="false">def media(valores):
+    # complete a funcao
+    pass</textarea>
+        </div>
+        <div class="coluna">
+          <pre class="saida saida-ok">Executado em 0,42 s
+media([2, 4, 6]) -> 4.0
+Todos os testes passaram.</pre>
+          <pre class="saida saida-erro">AssertionError: media([]) deveria devolver 0, devolveu None</pre>
+        </div>
+      </div>
+
+      <!-- LISTA DE ITENS -->
+      <h2 class="mb-4">Itens do modulo</h2>
+      <div class="cartao mb-5">
+        <ul class="lista-itens">
+          <li class="item-linha feito">
+            <label class="marcacao"><input type="checkbox" checked></label>
+            <div class="item-corpo">
+              <div class="item-titulo">StatQuest — Statistics Fundamentals</div>
+              <div class="item-meta"><span data-ico="video"></span><span>playlist</span><span>6 h</span></div>
+            </div>
+            <button class="btn btn-sutil btn-pequeno" type="button">Abrir</button>
+          </li>
+          <li class="item-linha">
+            <label class="marcacao"><input type="checkbox"></label>
+            <div class="item-corpo">
+              <div class="item-titulo">Pratica: reproduzir o teste t em um dado do seu trabalho</div>
+              <div class="item-meta"><span data-ico="lampada"></span><span>entregavel</span></div>
+            </div>
+          </li>
+          <li class="item-linha">
+            <label class="marcacao"><input type="checkbox"></label>
+            <div class="item-corpo">
+              <div class="item-titulo">Interpretacao de p-valor</div>
+              <div class="item-meta"><span data-ico="externo"></span><span>leitura externa</span><span>40 min</span></div>
+            </div>
+            <button class="btn btn-sutil btn-pequeno" type="button">Abrir</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ESTADOS -->
+      <h2 class="mb-4">Estado vazio e carregando</h2>
+      <div class="grade grade-2 mb-5">
+        <div class="cartao">
+          <div class="vazio">
+            <div><span data-ico="livro" data-tamanho="32"></span></div>
+            <h4>Sua estante esta vazia</h4>
+            <p class="txt-pequeno">Busque um livro ou cadastre um que voce tem em papel.</p>
+            <button class="btn btn-secundario btn-pequeno mt-3" type="button"><span data-ico="mais"></span> Adicionar livro</button>
+          </div>
+        </div>
+        <div class="cartao">
+          <div class="linha mb-3"><span class="girando" data-ico="atualizar"></span> <span class="txt-pequeno">Carregando o Pyodide (~10 MB, so na primeira vez)</span></div>
+          <div class="esqueleto mb-3" style="height: 14px; width: 60%"></div>
+          <div class="esqueleto mb-3" style="height: 14px; width: 90%"></div>
+          <div class="esqueleto" style="height: 14px; width: 75%"></div>
+        </div>
+      </div>
+
+      <!-- ICONES -->
+      <h2 class="mb-4">Icones</h2>
+      <div class="cartao mb-5">
+        <p class="txt-pequeno txt-fraco">Contorno de 1,75 px em grade de 24. Herdam a cor do texto. Nenhum emoji no projeto.</p>
+        <div class="grade grade-auto mt-4" id="galeria-icones"></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // preenche todos os marcadores data-ico com o SVG correspondente
+  function pintarIcones(raiz) {
+    var alvos = raiz.querySelectorAll("[data-ico]");
+    for (var i = 0; i < alvos.length; i++) {
+      var alvo = alvos[i];
+      if (alvo.firstChild) { continue; }
+      var tamanho = parseInt(alvo.getAttribute("data-tamanho"), 10) || 18;
+      alvo.appendChild(PDC.icones.criar(alvo.getAttribute("data-ico"), tamanho));
+    }
+  }
+
+  function bloco(nome, variavel, texto) {
+    var caixa = document.createElement("div");
+    var faixa = document.createElement("div");
+    faixa.style.height = "38px";
+    faixa.style.borderRadius = "6px";
+    faixa.style.border = "1px solid var(--borda)";
+    faixa.style.background = "var(" + variavel + ")";
+    var rotulo = document.createElement("div");
+    rotulo.className = "txt-mini txt-fraco mt-3";
+    rotulo.textContent = texto || nome;
+    caixa.appendChild(faixa);
+    caixa.appendChild(rotulo);
+    return caixa;
+  }
+
+  var base = document.getElementById("amostra-base");
+  var listaBase = [
+    ["--fundo", "fundo"], ["--superficie", "superficie"], ["--superficie-2", "superficie 2"],
+    ["--superficie-3", "superficie 3"], ["--borda", "borda"], ["--borda-forte", "borda forte"],
+    ["--acento", "acento"], ["--acento-fraco", "acento fraco"], ["--ok", "ok"],
+    ["--aviso", "aviso"], ["--erro", "erro"], ["--sidebar", "sidebar"]
+  ];
+  listaBase.forEach(function (par) { base.appendChild(bloco(par[0], par[0], par[1])); });
+
+  var fases = document.getElementById("amostra-fases");
+  ["--f1", "--f2", "--f3", "--f4", "--f5", "--f6"].forEach(function (v, i) {
+    fases.appendChild(bloco(v, v, "Fase " + (i + 1)));
+  });
+
+  var trilhas = document.getElementById("amostra-trilhas");
+  [["--t-dados", "Dados"], ["--t-engenharia", "Engenharia"], ["--t-gestao", "Gestao"],
+   ["--t-lideranca", "Lideranca"], ["--t-desenvolvimento", "Desenvolvimento"]].forEach(function (par) {
+    trilhas.appendChild(bloco(par[0], par[0], par[1]));
+  });
+
+  var galeria = document.getElementById("galeria-icones");
+  PDC.icones.lista().forEach(function (chave) {
+    var caixa = document.createElement("div");
+    caixa.className = "linha";
+    caixa.appendChild(PDC.icones.criar(chave, 20));
+    var nome = document.createElement("span");
+    nome.className = "txt-mini txt-fraco mono";
+    nome.textContent = chave;
+    caixa.appendChild(nome);
+    galeria.appendChild(caixa);
+  });
+
+  document.getElementById("marca-ico").appendChild(PDC.icones.marca(26));
+  pintarIcones(document);
+
+  // alternancia de tema: auto -> claro -> escuro
+  var temas = ["auto", "claro", "escuro"];
+  var atual = 0;
+  document.getElementById("btn-tema").addEventListener("click", function () {
+    atual = (atual + 1) % temas.length;
+    document.documentElement.setAttribute("data-tema", temas[atual]);
+    document.getElementById("tema-rotulo").textContent = "Tema: " + temas[atual];
+  });
+
+  document.getElementById("btn-menu").addEventListener("click", function () {
+    document.getElementById("app").classList.toggle("menu-aberto");
+  });
+})();
+</script>
+</body>
+</html>
