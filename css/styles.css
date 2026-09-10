@@ -575,6 +575,59 @@ pre.bloco-codigo {
 .faixa-fase { background: var(--cor-fase, var(--acento)); }
 .texto-fase { color: var(--cor-fase, var(--acento)); }
 
+/* 5.21 hero das telas de trilha e modulo */
+.hero { margin-bottom: var(--e5); }
+.hero h1 { margin-bottom: var(--e2); }
+.hero p { max-width: var(--larg-leitura); }
+
+/* 5.22 player de video: o iframe so entra no DOM depois do clique */
+.player {
+  position: relative; aspect-ratio: 16 / 9; width: 100%;
+  background: var(--superficie-2); border: 1px solid var(--borda);
+  border-radius: var(--r2); overflow: hidden; margin-bottom: var(--e3);
+}
+.player iframe { width: 100%; height: 100%; border: 0; display: block; }
+.player-capa {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--e2);
+  background: var(--superficie-2); border: 0; cursor: pointer;
+  color: var(--txt); font-family: inherit; font-size: var(--t-md);
+  transition: background var(--tr), color var(--tr);
+}
+.player-capa:hover { background: var(--superficie-3); color: var(--acento); }
+.player-titulo { font-weight: 600; color: var(--txt-forte); max-width: 80%; text-align: center; }
+
+/* 5.23 linha de modulo na tela da trilha */
+.modulo-linha { cursor: pointer; }
+.modulo-numero {
+  flex: 0 0 auto; width: 26px; text-align: center;
+  font-weight: 700; font-variant-numeric: tabular-nums; font-size: var(--t-lg);
+}
+.modulo-progresso { flex: 0 0 110px; }
+.fase-bolinha { width: 9px; height: 9px; border-radius: var(--rf); flex: 0 0 auto; display: inline-block; }
+
+/* 5.24 navegacao entre modulos */
+.modulo-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--e3);
+  margin-top: var(--e6); padding-top: var(--e4); border-top: 1px solid var(--borda);
+}
+
+/* 5.25 menu contextual da trilha */
+.ctx-fase {
+  display: flex; align-items: center; gap: var(--e2);
+  padding: var(--e3) var(--e4) var(--e1);
+  font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .06em;
+  color: var(--sidebar-item); opacity: .8;
+}
+.nav-modulo { font-size: var(--t-sm); padding-top: var(--e1); padding-bottom: var(--e1); }
+.app.rail .ctx-fase { display: none; }
+
+/* 5.26 material externo dentro do portal */
+.quadro-externo {
+  width: 100%; height: calc(100vh - var(--alt-topbar) - 200px); min-height: 420px;
+  border: 1px solid var(--borda); border-radius: var(--r2); background: var(--superficie);
+}
+
 /* --------------------------------------------------------------------------
    6. UTILITARIOS
    -------------------------------------------------------------------------- */
@@ -624,6 +677,9 @@ pre.bloco-codigo {
   .cartao { padding: var(--e3); }
   .aula { font-size: var(--t-md); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .modulo-progresso { display: none; }
+  .modulo-nav { flex-wrap: wrap; }
+  .modulo-nav .btn { flex: 1 1 auto; }
   .modal-pe { flex-direction: column-reverse; }
   .modal-pe .btn { width: 100%; }
   .topbar { gap: var(--e2); }
@@ -632,7 +688,10 @@ pre.bloco-codigo {
 
 @media (max-width: 400px) {
   :root { --t-3xl: 22px; --t-2xl: 19px; }
-  .stats { grid-template-columns: 1fr; }
   .abas { gap: 0; }
   .aba { padding: var(--e2); font-size: var(--t-sm); }
+}
+
+@media (max-width: 340px) {
+  .stats { grid-template-columns: 1fr; }
 }

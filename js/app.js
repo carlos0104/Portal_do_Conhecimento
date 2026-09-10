@@ -117,6 +117,14 @@
     refs.anuncio.appendChild(ui.txt(texto));
   }
 
+  /* Fases e modulos so aparecem no menu quando se esta dentro de uma trilha. */
+  function atualizarCtxnav(trilhaId, moduloId) {
+    ui.limpar(refs.ctxnav);
+    PDC.views.ctxnav(trilhaId, moduloId).forEach(function (no) {
+      refs.ctxnav.appendChild(no);
+    });
+  }
+
   function marcarMenuAtivo(rotaAtual) {
     var raiz = rotaAtual.partes[0] || "";
     var itens = refs.app.querySelectorAll(".nav-item[data-rota]");
@@ -139,25 +147,28 @@
 
   function registrarRotas() {
     PDC.rota.registrar("", function (p, consulta) {
-      var corpo = ui.emConstrucao("Inicio", 5,
-        "Catalogo das trilhas com progresso de cada uma.");
+      var corpo = PDC.views.home();
       if (consulta && consulta.desconhecida) {
         corpo.insertBefore(
           ui.aviso("atencao", "Endereco nao encontrado: " + consulta.desconhecida + ". Voce foi trazido para o inicio."),
-          corpo.childNodes[1]
+          corpo.firstChild
         );
       }
+      atualizarCtxnav(null, null);
       trocarConteudo(corpo, "Inicio");
     });
 
     PDC.rota.registrar("trilha/:id", function (p) {
-      trocarConteudo(ui.emConstrucao("Trilha", 5,
-        "Painel da trilha " + p.id + ": horas, fases, plano contra realizado e previsao."), "Trilha");
+      var t = PDC.trilhas.obter(p.id);
+      atualizarCtxnav(p.id, null);
+      trocarConteudo(PDC.views.trilha(p.id), t ? t.nome : "Trilha");
     });
 
     PDC.rota.registrar("modulo/:id", function (p) {
-      trocarConteudo(ui.emConstrucao("Modulo", 5,
-        "Modulo " + p.id + ": aula no portal, videos, materiais e pratica."), "Modulo");
+      var local = PDC.trilhas.localizarModulo(p.id);
+      atualizarCtxnav(local ? local.trilha.id : null, p.id);
+      trocarConteudo(PDC.views.modulo(p.id),
+        local ? local.modulo.n + ". " + local.modulo.titulo : "Modulo");
     });
 
     PDC.rota.registrar("biblioteca", function () {
@@ -176,8 +187,7 @@
     });
 
     PDC.rota.registrar("area", function () {
-      trocarConteudo(ui.emConstrucao("Minha area", 5,
-        "Conteudo extra, metas da semana e o que voce esta estudando."), "Minha area");
+      trocarConteudo(PDC.views.area(), "Minha area");
     });
 
     PDC.rota.registrar("nova", function () {
@@ -190,9 +200,7 @@
     });
 
     PDC.rota.registrar("ver", function (p, consulta) {
-      trocarConteudo(ui.emConstrucao("Visualizador", 5,
-        "Abertura de material externo dentro do portal" +
-        (consulta && consulta.u ? ": " + consulta.u : "") + "."), "Visualizador");
+      trocarConteudo(PDC.views.visualizador(consulta && consulta.u), "Material externo");
     });
   }
 

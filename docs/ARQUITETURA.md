@@ -19,7 +19,9 @@ index.html
    +-- js/core.js            PDC.util, PDC.icones, PDC.rota, PDC.estado
    +-- js/db.js              PDC.db      (localStorage + IndexedDB + migracao)
    +-- js/ui.js              PDC.ui      (componentes e helpers de DOM seguro)
-   +-- js/trilhas/*.js       PDC.trilhas (dados de conteudo, um arquivo por trilha)
+   +-- js/views.js           PDC.views   (telas: home, trilha, modulo, area, visualizador)
+   +-- js/trilhas/*.js       conteudo, um arquivo por trilha; cada um chama
+                             PDC.trilhas.registrar() (o registro vive em core.js)
    +-- js/exercicios.js      PDC.exercicios
    +-- js/biblioteca.js      PDC.biblioteca
    +-- js/leitor.js          PDC.leitor
@@ -31,7 +33,7 @@ index.html
 
 ### 1.1 Ordem de carregamento (obrigatória)
 
-`core.js` → `db.js` → `ui.js` → `trilhas/*.js` → `exercicios.js` → `biblioteca.js` → `leitor.js` → `compreensao.js` → `fixacao.js` → `gerador.js` → `app.js`
+`core.js` → `db.js` → `ui.js` → `views.js` → `trilhas/*.js` → `exercicios.js` → `biblioteca.js` → `leitor.js` → `compreensao.js` → `fixacao.js` → `gerador.js` → `app.js`
 
 Regras:
 1. Um arquivo só pode usar `PDC.x` de arquivos que vêm **antes** dele na fila.
@@ -445,3 +447,13 @@ Detalhamento dos tokens: Etapa 3.
 | QT-04 | Algoritmo de resumo: frequência ponderada ou TextRank | 10 |
 | QT-05 | Layout do mapa mental: radial ou árvore horizontal | 10 |
 | QT-06 | Gutendex entra como quinta fonte (depende do reteste em casa) | 8 |
+
+---
+
+## 13. Alteracoes registradas apos a Etapa 2
+
+| Data | Mudanca | Motivo |
+|---|---|---|
+| 10/09/2026 | Criado `js/views.js` | `ui.js` acumularia componentes genericos e telas inteiras; separar mantem os dois legiveis |
+| 10/09/2026 | Criado `PDC.trilhas` em `core.js` | Os arquivos de conteudo precisam de um registro que exista antes deles na fila de carregamento |
+| 10/09/2026 | Criado `js/trilhas/exemplo.js` | Conteudo de demonstracao da Etapa 5. **Sai do `index.html` na Etapa 6** |

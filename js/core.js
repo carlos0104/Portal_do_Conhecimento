@@ -312,6 +312,89 @@
 
 
 /* ==========================================================================
+   PDC.trilhas — registro do conteudo.
+   Cada arquivo em js/trilhas/ chama PDC.trilhas.registrar(trilha).
+   As trilhas criadas pelo usuario vem de PDC.estado.dados.trilhas.
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var PDC = window.PDC;
+  var nativas = [];
+  var indice = null;
+
+  function registrar(trilha) {
+    if (!trilha || !trilha.id) { return; }
+    nativas.push(trilha);
+    indice = null;
+  }
+
+  function lista() {
+    var custom = (PDC.estado && PDC.estado.dados.trilhas) || [];
+    return nativas.concat(custom);
+  }
+
+  function construirIndice() {
+    indice = {};
+    lista().forEach(function (trilha) {
+      var ordem = [];
+      (trilha.fases || []).forEach(function (fase) {
+        (fase.modulos || []).forEach(function (modulo) {
+          ordem.push(modulo.id);
+          indice[modulo.id] = { trilha: trilha, fase: fase, modulo: modulo };
+        });
+      });
+      ordem.forEach(function (id, i) {
+        indice[id].anterior = i > 0 ? ordem[i - 1] : null;
+        indice[id].proximo = i < ordem.length - 1 ? ordem[i + 1] : null;
+        indice[id].posicao = i + 1;
+        indice[id].total = ordem.length;
+      });
+    });
+  }
+
+  function obter(id) {
+    var achada = null;
+    lista().forEach(function (t) { if (t.id === id) { achada = t; } });
+    return achada;
+  }
+
+  function localizarModulo(moduloId) {
+    if (!indice) { construirIndice(); }
+    return indice[moduloId] || null;
+  }
+
+  /* Primeiro modulo ainda nao concluido — usado no botao "continuar". */
+  function proximoAberto(trilha) {
+    var alvo = null;
+    (trilha.fases || []).forEach(function (fase) {
+      (fase.modulos || []).forEach(function (modulo) {
+        if (!alvo && PDC.estado.progressoModulo(modulo) < 1) { alvo = modulo; }
+      });
+    });
+    return alvo;
+  }
+
+  function contar(trilha) {
+    var fases = (trilha.fases || []).length;
+    var modulos = 0;
+    (trilha.fases || []).forEach(function (f) { modulos += (f.modulos || []).length; });
+    return { fases: fases, modulos: modulos };
+  }
+
+  PDC.trilhas = {
+    registrar: registrar,
+    lista: lista,
+    obter: obter,
+    localizarModulo: localizarModulo,
+    proximoAberto: proximoAberto,
+    contar: contar,
+    invalidarIndice: function () { indice = null; }
+  };
+})();
+
+
+/* ==========================================================================
    PDC.rota — roteador por hash (docs/ARQUITETURA.md §6)
    Padrao: "trilha/:id". Rota desconhecida cai na home com aviso.
    ========================================================================== */
