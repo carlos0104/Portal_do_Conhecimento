@@ -39,14 +39,24 @@ Os cinco pilares:
 ## 2. Contexto
 
 - **Origem:** inspirado no "Estude+", portal feito por um colega. Serve **apenas como modelo conceitual** — o código aqui é novo, escrito do zero, com escopo maior.
-- **Repositório (confirmado):** `https://github.com/carlos0104/Portal_do_Conhecimento` — **público, vazio, branch `main` ainda não criada**. Remoto: `https://github.com/carlos0104/Portal_do_Conhecimento.git`.
+- **Repositório:** `https://github.com/carlos0104/Portal_do_Conhecimento` — **público**, branch `main` criada e publicada na Etapa 0. Remoto: `https://github.com/carlos0104/Portal_do_Conhecimento.git`.
 - **Publicação:** GitHub Pages a partir da `main` (deploy automático, ~1-2 min por commit). O Pages precisa ser habilitado em Settings → Pages na Etapa 16.
 - **Repositório é PÚBLICO.** Tudo que for commitado fica visível para qualquer pessoa. Isso governa as regras de conteúdo e segurança abaixo.
 - **Ambiente da máquina (verificado):** `git 2.45`, `node v24.16`, `npm 11.13`, `python 3.11 / 3.13`, `curl 8.8`. **`gh` (GitHub CLI) NÃO está instalado.**
 - **Rede corporativa:** `git` via HTTPS funciona; `curl` para `github.com` e `api.github.com` está **bloqueado**. Publicar por **git**, nunca pela API do GitHub. A rede corporativa também pode bloquear parte das APIs de livros — isso é testado na Etapa 8.
-- **Atenção OneDrive:** a pasta de trabalho atual fica dentro do OneDrive. Repositório git em pasta sincronizada pode corromper o `.git`. Decidir na Etapa 0 se o clone vai para fora do OneDrive (ex.: `C:\Repos\Portal_do_Conhecimento`).
+- **Fora do OneDrive por decisão da Etapa 0.** Repositório git em pasta sincronizada corrompe o `.git`. Nunca mover o projeto para dentro do OneDrive.
 
 ---
+
+## 2.1 Decisões já tomadas pelo dono (não reabrir sem nova decisão)
+
+| Data | Decisão |
+|---|---|
+| 10/09/2026 | Pasta local do projeto: `C:\Users\carlos.souza\Repos\Portal_do_Conhecimento`, **fora do OneDrive** |
+| 10/09/2026 | Documento de produto aprovado: `docs/PRODUTO.md` |
+| 10/09/2026 | **Tema claro e escuro**, com opção automática pelo sistema |
+| 10/09/2026 | **Ordem das trilhas é sob demanda**: o dono escolhe a trilha, o conteúdo é produzido e a trilha é montada. A Etapa 6 entrega o motor de conteúdo mais a primeira trilha escolhida |
+| 10/09/2026 | Teste de CORS das fontes de livros **antecipado** da Etapa 8 para a Etapa 2. Resultado em `docs/FONTES.md` |
 
 ## 3. Perfil do usuário (para calibrar o conteúdo)
 
