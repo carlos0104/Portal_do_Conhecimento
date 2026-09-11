@@ -911,10 +911,41 @@
             ? montarLeitorDocx(livro, registro.blob, contexto)
             : montarLeitorPdf(livro, registro.blob, contexto);
 
-          corpo.appendChild(el("div", { "class": "leitor-grade" }, [
+          var areaLeitura = el("div", { "class": "leitor-grade" }, [
             leitor,
             el("aside", { "class": "leitor-lado" }, [painelDestaques(livro, contexto)])
-          ]));
+          ]);
+          var areaEstudio = el("div", { "class": "oculto" });
+
+          /* O estudio trabalha sobre o texto ja extraido; nao reabre o arquivo. */
+          var abaLeitura = el("button", { "class": "aba ativa", type: "button" }, [ui.txt("Documento")]);
+          var abaEstudio = el("button", { "class": "aba", type: "button" }, [ui.txt("Estudio de compreensao")]);
+
+          abaLeitura.addEventListener("click", function () {
+            abaLeitura.classList.add("ativa"); abaEstudio.classList.remove("ativa");
+            areaLeitura.classList.remove("oculto"); areaEstudio.classList.add("oculto");
+          });
+          abaEstudio.addEventListener("click", function () {
+            abaEstudio.classList.add("ativa"); abaLeitura.classList.remove("ativa");
+            areaEstudio.classList.remove("oculto"); areaLeitura.classList.add("oculto");
+            if (areaEstudio.childNodes.length) { return; }
+            areaEstudio.appendChild(ui.carregando("Lendo o texto extraido"));
+            lerTexto(livroId).then(function (registro) {
+              ui.limpar(areaEstudio);
+              var texto = registro && registro.paginas ? registro.paginas.join("\n") : "";
+              areaEstudio.appendChild(PDC.compreensao.tela({
+                id: livroId, titulo: livro.titulo, texto: texto
+              }));
+            }, function (erro) {
+              ui.limpar(areaEstudio);
+              areaEstudio.appendChild(ui.aviso("erro",
+                "Nao foi possivel ler o texto extraido: " + erro.message));
+            });
+          });
+
+          corpo.appendChild(el("div", { "class": "abas" }, [abaLeitura, abaEstudio]));
+          corpo.appendChild(areaLeitura);
+          corpo.appendChild(areaEstudio);
 
           corpo.appendChild(el("div", { "class": "linha mt-4" }, [
             ui.botao("Trocar arquivo", {

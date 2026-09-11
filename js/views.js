@@ -599,6 +599,41 @@
     });
     var ritmo = PDC.estado.dados.config.ritmo;
 
+    /* Estudio para texto avulso: colar e analisar sem precisar de arquivo. */
+    var areaColada = el("textarea", { "class": "area", rows: "6",
+      placeholder: "cole aqui um texto para resumir, extrair termos e virar mapa mental" });
+    var tituloColado = el("input", { "class": "entrada", type: "text", placeholder: "titulo (opcional)" });
+    var saidaColada = el("div", { "class": "mt-4" });
+
+    partes.push(el("div", { "class": "mt-5" }));
+    partes.push(ui.cartao([
+      el("h3", { "class": "mb-3", texto: "Estudio de compreensao" }),
+      el("p", { "class": "txt-pequeno txt-fraco",
+        texto: "Resumo extrativo, glossario e mapa mental de qualquer texto. " +
+               "Texto colado aqui nao e guardado: serve para analisar na hora." }),
+      el("label", { "class": "campo" }, [
+        el("span", { "class": "campo-rotulo", texto: "Titulo" }), tituloColado]),
+      el("label", { "class": "campo" }, [
+        el("span", { "class": "campo-rotulo", texto: "Texto" }), areaColada]),
+      ui.botao("Analisar texto", {
+        variante: "primario", icone: "lampada",
+        aoClicar: function () {
+          ui.limpar(saidaColada);
+          if (areaColada.value.trim().length < 200) {
+            saidaColada.appendChild(ui.aviso("atencao",
+              "Cole pelo menos alguns paragrafos. Texto muito curto nao rende resumo nem mapa."));
+            return;
+          }
+          saidaColada.appendChild(PDC.compreensao.tela({
+            id: null,
+            titulo: tituloColado.value.trim() || "Texto colado",
+            texto: areaColada.value
+          }));
+        }
+      }),
+      saidaColada
+    ]));
+
     partes.push(el("div", { "class": "mt-5" }));
     partes.push(ui.cartao([
       el("h3", { "class": "mb-3", texto: "Onde voce esta" }),

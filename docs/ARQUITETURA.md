@@ -255,7 +255,8 @@ Contrato do teste de Python: o harness executa o código do usuário e depois o 
 
 // mapa mental
 { id:"mm...", origemId:"b...", titulo:"...", gerado:true,
-  nos:[ { id:"n1", pai:null, texto:"...", nivel:0, editado:false, x:null, y:null } ],
+  nos:[ { id:"n1", pai:null, texto:"...", nivel:0, editado:false, recolhido:false, x:null, y:null } ],
+  ficha:{ aprendi:"...", aplico:"...", duvidas:"..." },
   atualizadoEm:"..." }
 ```
 
@@ -463,3 +464,5 @@ Detalhamento dos tokens: Etapa 3.
 | 11/09/2026 | `standardFontDataUrl` e `cMapUrl` obrigatórios no `getDocument` | Sem eles um PDF com fonte padrão (Helvetica, Times) não termina de renderizar, e falha em silêncio |
 | 11/09/2026 | `--scale-factor` definido na camada de texto | Exigência do PDF.js 3.x: sem a variável, o texto selecionável não cai sobre as letras desenhadas |
 | 11/09/2026 | Âncora de PDF usa o texto da camada renderizada, não o da extração | Garante que o deslocamento guardado corresponde exatamente ao que o usuário selecionou na tela |
+| 11/09/2026 | Store `mapas` guarda também a ficha de leitura | Um registro por origem, com `nos` e `ficha` — evita criar um store novo só para três campos de texto |
+| 11/09/2026 | `compreensao.js` resolve `PDC.ui` só ao montar a tela | Ler `PDC.ui` no corpo do arquivo violava a regra §1.1 e quebrava os validadores em Node |

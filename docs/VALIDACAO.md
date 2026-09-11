@@ -137,14 +137,17 @@ Conferir em 1366, 900, 640 e 400 px de largura. A página nunca rola na horizont
 
 ### Etapa 10 — Compreensão
 - V-1 a V-6.
-- **Fidelidade do resumo (RN-008):**
+- **Fidelidade e integridade (RN-008):**
   ```bash
   node tools/valida-resumo.js
   ```
-  Toda frase do resumo tem que existir literalmente no texto de origem.
-- Gerar resumo em 3 documentos diferentes: com títulos, sem títulos e muito curto.
-- Mapa mental: documento sem títulos precisa degradar bem, não gerar mapa vazio.
-- Exportar PNG e Markdown e abrir os arquivos.
+  Roda sobre as **67 aulas reais das trilhas** mais casos de borda, e verifica: toda frase do resumo existe literalmente na origem; resumo longo nunca menor que o curto; texto com conteúdo nunca produz resumo vazio; todo termo do glossário aparece no próprio trecho de contexto; nenhum nó do mapa aponta para pai inexistente; nenhum nó fica sem posição.
+- Na tela, reconferir RN-008: comparar cada frase exibida com o texto de origem.
+- Três tamanhos de resumo, com quantidade crescente.
+- **Mapa mental sem títulos precisa degradar bem** — termos recorrentes com limiar baixo e, se nem isso houver, as frases de maior peso viram ramos. Mapa só com a raiz conta como falha.
+- Mapa: selecionar, editar, adicionar, remover, recolher, arrastar e "refazer do texto".
+- Exportar PNG e Markdown; conferir o nome do arquivo e o conteúdo do Markdown.
+- Persistência: editar o mapa e a ficha, sair e voltar — tudo tem que estar lá.
 
 ### Etapa 11 — Fixação
 - V-1 a V-6.

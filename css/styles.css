@@ -724,6 +724,30 @@ pre.bloco-codigo {
 .destaque-item .area { min-height: 44px; }
 .nota { background: var(--superficie-2); border-radius: var(--r2); padding: var(--e2) var(--e3); margin: 0; }
 
+/* 5.30 estudio de compreensao */
+.resumo-lista { margin: 0; padding-left: var(--e5); }
+.resumo-lista li { margin-bottom: var(--e3); line-height: var(--altura-leitura); }
+.glossario-item { padding: var(--e3); margin-bottom: var(--e3); }
+
+.mapa-palco {
+  overflow: auto; background: var(--superficie-2); border: 1px solid var(--borda);
+  border-radius: var(--r2); padding: var(--e4); max-height: 70vh; margin-top: var(--e4);
+}
+.mapa-svg { display: block; }
+.mapa-linha { stroke: var(--borda-forte); stroke-width: 1.5; fill: none; }
+.mapa-no { cursor: grab; }
+.mapa-no:active { cursor: grabbing; }
+.mapa-caixa { fill: var(--superficie); stroke: var(--borda-forte); stroke-width: 1; }
+.mapa-no.nivel0 .mapa-caixa { stroke: var(--acento); stroke-width: 2; }
+.mapa-no.nivel1 .mapa-caixa { stroke: var(--f1); }
+.mapa-no.editado .mapa-caixa { stroke-dasharray: 4 3; }
+.mapa-no.selecionado .mapa-caixa { stroke: var(--acento); stroke-width: 2.5; }
+.mapa-no:focus-visible .mapa-caixa { stroke: var(--acento); stroke-width: 2.5; }
+.mapa-rotulo { fill: var(--txt-forte); font-size: 12px; font-family: var(--fonte-ui); }
+.mapa-bolinha { fill: var(--superficie); stroke: var(--acento); stroke-width: 1.5; }
+.mapa-sinal { fill: var(--acento); font-size: 13px; font-family: var(--fonte-mono); }
+.mapa-alternar { cursor: pointer; }
+
 /* --------------------------------------------------------------------------
    6. UTILITARIOS
    -------------------------------------------------------------------------- */
