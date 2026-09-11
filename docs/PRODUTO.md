@@ -519,7 +519,7 @@ Cenário: Falta de internet degrada com aviso, não quebra
 | Q-01 | Antecipar o teste de CORS das fontes de livros para a Etapa 2? | **Resolvida (10/09/2026).** Antecipado e executado. 4 fontes aprovadas, 4 reprovadas, 1 pendente de reteste. Resultado em `FONTES.md`; consequências para o schema em `ARQUITETURA.md` §3.7 |
 | Q-02 | Tema claro, escuro ou os dois? | **Resolvida (10/09/2026).** Os dois, com opção automática pelo sistema. Tokens duplicados na Etapa 3 |
 | Q-03 | Qual trilha ganha conteúdo primeiro na Etapa 6? | **Resolvida (10/09/2026).** Sem ordem fixa: o dono escolhe a trilha e o portal recebe o conteúdo sob demanda. A Etapa 6 entrega o **motor de conteúdo + a primeira trilha escolhida**; as demais entram em incrementos posteriores |
-| Q-04 | Base de exemplo para os exercícios de SQL: vendas, RH ou dados imobiliários? | Aberta. Necessária antes da Etapa 7 |
+| Q-04 | Base de exemplo para os exercícios de SQL: vendas, RH ou dados imobiliários? | **Resolvida (11/09/2026).** `vendas` (clientes, produtos, pedidos, itens) — neutra e transferível. Documentada no cabeçalho de `js/trilhas/engenharia.js` |
 | Q-05 | As horas por módulo do capítulo 6 fazem sentido para o seu ritmo real? | Aberta. Revisar após 4 semanas de uso real |
 
 ---

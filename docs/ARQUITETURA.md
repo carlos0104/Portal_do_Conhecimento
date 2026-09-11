@@ -441,7 +441,7 @@ Detalhamento dos tokens: Etapa 3.
 
 | # | Questão | Decide na etapa |
 |---|---|---|
-| QT-01 | Base de exemplo do SQL — vendas, RH ou imobiliário (Q-04 do produto) | 7 |
+| QT-01 | ~~Base de exemplo do SQL~~ | **Resolvida na Etapa 6: `vendas`** |
 | QT-02 | sql.js carrega o banco pronto ou recria por script a cada exercício | 7 |
 | QT-03 | Limite de tamanho de PDF aceito sem aviso | 9 |
 | QT-04 | Algoritmo de resumo: frequência ponderada ou TextRank | 10 |
