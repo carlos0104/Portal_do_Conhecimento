@@ -85,7 +85,7 @@
           { id: "engenharia.m1.e2", tipo: "sql", base: "vendas",
             enunciado: "Traga o pedido mais recente de cada cliente, com id do cliente, id do pedido e data.",
             starter: "SELECT cliente_id, id, data\nFROM pedidos;",
-            esperado: { colunas: ["cliente_id", "id", "data"], linhas: [[1, 104, "2026-03-11"], [2, 106, "2026-03-20"]] },
+            esperado: { colunas: ["cliente_id", "id", "data"], linhas: [[1, 104, "2026-03-11"], [2, 106, "2026-03-20"], [3, 103, "2026-02-20"]] },
             ordemImporta: false,
             gabarito: "WITH ordenado AS (\n  SELECT id, cliente_id, data,\n         ROW_NUMBER() OVER (PARTITION BY cliente_id ORDER BY data DESC) AS ordem\n  FROM pedidos\n)\nSELECT cliente_id, id, data FROM ordenado WHERE ordem = 1;",
             dica: "ROW_NUMBER particionado por cliente, ordenado por data decrescente, filtrando ordem = 1." }

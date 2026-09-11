@@ -442,24 +442,13 @@
       ]));
     }
 
-    /* 5. pratica */
+    /* 5. pratica: corrigida automaticamente pelo motor de exercicios */
     if ((m.exercicios || []).length) {
-      partes.push(ui.cartao([
-        el("h3", { "class": "mb-3", texto: "Testes praticos" }),
-        ui.aviso("info", "O corretor automatico de Python e SQL entra na Etapa 7. " +
-          "Este modulo tem " + m.exercicios.length + " exercicio(s) preparado(s)."),
-        el("ul", { "class": "lista-itens mt-3" }, m.exercicios.map(function (ex) {
-          return el("li", { "class": "item-linha" }, [
-            ui.icone("codigo", 16),
-            el("div", { "class": "item-corpo" }, [
-              el("div", { "class": "item-titulo", texto: ex.enunciado }),
-              el("div", { "class": "item-meta" }, [el("span", { texto: ex.tipo })])
-            ]),
-            PDC.estado.estaFeito(ex.id) ? ui.etiqueta("aprovado", "ok") : ui.etiqueta("pendente")
-          ]);
-        }))
-      ]));
-      partes.push(el("div", { "class": "mt-4" }));
+      var pratica = PDC.exercicios.secao(m, atualizarProgresso);
+      if (pratica) {
+        partes.push(pratica);
+        partes.push(el("div", { "class": "mt-4" }));
+      }
     }
 
     /* 6. navegacao */

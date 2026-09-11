@@ -628,6 +628,30 @@ pre.bloco-codigo {
   border: 1px solid var(--borda); border-radius: var(--r2); background: var(--superficie);
 }
 
+/* 5.27 exercicios */
+.exercicio { margin-bottom: var(--e3); }
+.exercicio + hr { margin: var(--e5) 0; }
+.exercicio > p { max-width: var(--larg-leitura); }
+
+.alternativa {
+  display: flex; align-items: flex-start; gap: var(--e3); width: 100%; text-align: left;
+  background: var(--superficie); border: 1px solid var(--borda-forte); border-radius: var(--r2);
+  padding: var(--e3); font-family: inherit; font-size: var(--t-md); color: var(--txt);
+  cursor: pointer; transition: border-color var(--tr), background var(--tr);
+}
+.alternativa:hover { background: var(--superficie-2); border-color: var(--txt-fraco); }
+.alternativa-letra {
+  flex: 0 0 auto; width: 22px; height: 22px; border-radius: var(--rf);
+  background: var(--superficie-3); color: var(--txt-forte);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: var(--t-xs); font-weight: 700;
+}
+.alternativa.escolhida { border-width: 2px; }
+.alternativa.certa { border-color: var(--ok); background: var(--ok-fraco); }
+.alternativa.certa .alternativa-letra { background: var(--ok); color: var(--txt-sobre-acento); }
+.alternativa.errada { border-color: var(--erro); background: var(--erro-fraco); }
+.alternativa.errada .alternativa-letra { background: var(--erro); color: var(--txt-sobre-acento); }
+
 /* --------------------------------------------------------------------------
    6. UTILITARIOS
    -------------------------------------------------------------------------- */

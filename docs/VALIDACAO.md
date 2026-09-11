@@ -90,13 +90,18 @@ Conferir em 1366, 900, 640 e 400 px de largura. A página nunca rola na horizont
 
 ### Etapa 7 — Exercícios
 - V-1 a V-3.
-- **Obrigatório para cada exercício de Python** — gabarito aprova, starter reprova:
+- **Python — gabarito aprova, starter reprova**, em Python real, um subprocesso por exercício:
   ```bash
   python tools/valida_exercicios.py
   ```
-- Idem para SQL, comparando o resultado com `esperado` (respeitando `ordemImporta`).
-- Casos de erro no navegador: código vazio, erro de sintaxe, laço infinito (deve ter corte por tempo), `import` de biblioteca ausente.
-- Medir o tempo do primeiro carregamento do Pyodide e registrar.
+- **SQL — gabarito bate com `esperado` na base real, starter não bate**, em `sqlite3`:
+  ```bash
+  python tools/valida_sql.py
+  ```
+  Os dois leem os exercícios por `node tools/dump-exercicios.js`, então validam exatamente o que o portal carrega.
+- Casos de erro **no navegador**, todos obrigatórios: código vazio, erro de sintaxe, laço infinito (corte por tempo), erro em tempo de execução, `import` de biblioteca ausente, SQL sobre tabela inexistente.
+- Medir o tempo do primeiro carregamento do Pyodide e do sql.js e registrar.
+- Conferir que o código digitado volta após recarregar e que "Restaurar" devolve o starter.
 
 ### Etapa 8 — Biblioteca
 - V-1 a V-4, V-6.
@@ -190,7 +195,9 @@ Os scripts em `tools/` são criados na etapa em que passam a ser necessários. N
 |---|---|---|
 | `tools/valida-conteudo.js` | 6 | Integridade das trilhas, ids, horas e aulas |
 | `tools/checa-links.js` | 6 | Status HTTP dos links externos |
-| `tools/valida_exercicios.py` | 7 | Gabarito aprova, starter reprova |
+| `tools/dump-exercicios.js` | 7 | Despeja exercícios e bases em JSON para os validadores |
+| `tools/valida_exercicios.py` | 7 | Python real: gabarito aprova, starter reprova |
+| `tools/valida_sql.py` | 7 | SQLite real: gabarito bate com o esperado, starter não |
 | `tools/testa-fontes.js` | 8 | CORS e disponibilidade das APIs de livros |
 | `tools/valida-resumo.js` | 10 | Fidelidade extrativa do resumo |
 | `tools/simula-sm2.js` | 11 | Intervalos da revisão espaçada |

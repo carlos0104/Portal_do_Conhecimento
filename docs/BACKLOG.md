@@ -18,7 +18,6 @@ Nada aqui é compromisso: é memória. Cada item vira etapa só por decisão do 
 | B-07 | **Sincronização entre dispositivos** | Etapa 1 | Exige backend | Fora das restrições atuais |
 | B-08 | **PWA com service worker** | Etapa 1 | Complexidade de cache e invalidação antes da v1 estar estável | Depois da Etapa 16, se o uso no celular pedir offline completo |
 | B-09 | **Revisar as horas dos módulos com dado real** | Etapa 1 (Q-05) | As 1.418 h são estimativa; só o uso dirá | Após 4 semanas de uso real do portal |
-| B-10 | **Exercícios de SQL rodando de verdade** | Etapa 6 | Os 15 exercícios de SQL estão escritos com `esperado` definido, mas o motor (sql.js) e a base de exemplo só existem na Etapa 7 | Etapa 7 |
 | B-11 | **Links que recusam automação** | Etapa 6 | `exercism.org`, `leetcode.com` e `manager-tools.com` devolvem 403 para verificador automático. Provavelmente abrem normalmente no navegador, mas **não foi possível confirmar** — o navegador de teste bloqueia navegação externa | Conferir manualmente ao usar os módulos que os citam |
 
 ---
@@ -31,3 +30,4 @@ Nada aqui é compromisso: é memória. Cada item vira etapa só por decisão do 
 | R-02 | Tema claro ou escuro | Os dois, mais opção automática. Etapa 3 |
 | R-03 | Base de exemplo do SQL (Q-04 / QT-01) | **vendas** (clientes, produtos, pedidos, itens). Decidido na Etapa 6, documentado no cabeçalho de `js/trilhas/engenharia.js` |
 | R-04 | Ordem das trilhas | Sem ordem fixa; as cinco foram escritas na Etapa 6 a pedido do dono |
+| R-05 | B-10, exercícios de SQL rodando | Resolvido na Etapa 7: sql.js no navegador + base `vendas`. Os 5 exercícios passam no navegador e no `sqlite3` |
