@@ -666,6 +666,64 @@ pre.bloco-codigo {
 .quebra { flex-wrap: wrap; }
 .selecao-curta { width: auto; min-width: 130px; min-height: 27px; padding: var(--e1) var(--e2); font-size: var(--t-sm); }
 
+/* 5.29 leitor de PDF e Word */
+.leitor-grade { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--e5); align-items: start; }
+.leitor { min-width: 0; }
+.leitor-lado { position: sticky; top: calc(var(--alt-topbar) + var(--e4)); max-height: 80vh; overflow-y: auto; }
+
+.leitor-barra {
+  display: flex; align-items: center; gap: var(--e2); flex-wrap: wrap;
+  padding: var(--e2) var(--e3); margin-bottom: var(--e3);
+  background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--r2);
+}
+.entrada-mini { width: 72px; min-height: 27px; padding: var(--e1) var(--e2); text-align: center; }
+
+.pdf-area {
+  overflow: auto; background: var(--superficie-2);
+  border: 1px solid var(--borda); border-radius: var(--r2); padding: var(--e4);
+  max-height: 78vh;
+}
+.pdf-palco { position: relative; margin: 0 auto; }
+.pdf-canvas { display: block; box-shadow: var(--sombra-2); }
+
+/* camada de texto do PDF.js: transparente, mas selecionavel */
+.pdf-texto {
+  position: absolute; inset: 0; overflow: hidden; opacity: 1; line-height: 1;
+  text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0;
+}
+.pdf-texto span, .pdf-texto br {
+  position: absolute; white-space: pre; cursor: text;
+  transform-origin: 0% 0%; color: transparent;
+}
+.pdf-texto ::selection { background: var(--acento); opacity: .3; }
+
+/* as marcas ficam atras do texto, desenhadas por retangulo */
+.pdf-marcas { position: absolute; inset: 0; pointer-events: none; }
+.marca { position: absolute; border-radius: 2px; mix-blend-mode: multiply; opacity: .55; }
+
+.cor-botao {
+  width: 26px; height: 26px; border-radius: var(--r1); cursor: pointer;
+  border: 1px solid var(--borda-forte); padding: 0;
+}
+.cor-botao:hover { border-color: var(--txt-fraco); }
+.amostra-cor { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+
+.doc-area {
+  background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--r2);
+  padding: var(--e5); max-height: 78vh; overflow-y: auto;
+}
+.doc-html { max-width: var(--larg-leitura); font-size: var(--t-lg); line-height: var(--altura-leitura); }
+.doc-html h1, .doc-html h2, .doc-html h3 { margin: var(--e5) 0 var(--e3); }
+.doc-html p { margin-bottom: var(--e4); }
+.doc-html table { width: 100%; border-collapse: collapse; margin-bottom: var(--e4); font-size: var(--t-sm); }
+.doc-html th, .doc-html td { border: 1px solid var(--borda); padding: var(--e2) var(--e3); text-align: left; }
+.doc-html img { max-width: 100%; height: auto; border-radius: var(--r2); }
+
+.destaque-item { padding: var(--e3); }
+.destaque-item .bloco-citacao { margin-bottom: 0; }
+.destaque-item .area { min-height: 44px; }
+.nota { background: var(--superficie-2); border-radius: var(--r2); padding: var(--e2) var(--e3); margin: 0; }
+
 /* --------------------------------------------------------------------------
    6. UTILITARIOS
    -------------------------------------------------------------------------- */
@@ -717,6 +775,9 @@ pre.bloco-codigo {
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .modulo-progresso { display: none; }
   .livro-capa { width: 52px; height: 76px; }
+  .leitor-grade { grid-template-columns: 1fr; }
+  .leitor-lado { position: static; max-height: none; }
+  .pdf-area, .doc-area { max-height: none; }
   .modulo-nav { flex-wrap: wrap; }
   .modulo-nav .btn { flex: 1 1 auto; }
   .modal-pe { flex-direction: column-reverse; }

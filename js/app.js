@@ -176,8 +176,7 @@
     });
 
     PDC.rota.registrar("livro/:id", function (p) {
-      trocarConteudo(ui.emConstrucao("Leitor", 9,
-        "Leitura de PDF e Word do livro " + p.id + ", com destaques e notas."), "Leitor");
+      trocarConteudo(PDC.leitor.tela(p.id), "Leitor");
     });
 
     PDC.rota.registrar("revisao", function () {

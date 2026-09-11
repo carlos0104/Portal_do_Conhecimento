@@ -459,3 +459,7 @@ Detalhamento dos tokens: Etapa 3.
 | 10/09/2026 | Criado `js/trilhas/exemplo.js` | Conteudo de demonstracao da Etapa 5. **Sai do `index.html` na Etapa 6** |
 | 11/09/2026 | `js/exercicios.js` e `js/biblioteca.js` trazem a própria tela | Módulo grande com interface própria mantém `views.js` legível; mesmo padrão dos dois |
 | 11/09/2026 | Campo `tambemEm` no objeto Livro | Guarda as outras fontes em que o mesmo livro apareceu, depois da desduplicação |
+| 11/09/2026 | PDF.js 3.11.174 em vez da 4.x | A versão 4 é distribuída só como ES module, o que quebraria a ordem de carregamento por `<script>` definida em §1.1 |
+| 11/09/2026 | `standardFontDataUrl` e `cMapUrl` obrigatórios no `getDocument` | Sem eles um PDF com fonte padrão (Helvetica, Times) não termina de renderizar, e falha em silêncio |
+| 11/09/2026 | `--scale-factor` definido na camada de texto | Exigência do PDF.js 3.x: sem a variável, o texto selecionável não cai sobre as letras desenhadas |
+| 11/09/2026 | Âncora de PDF usa o texto da camada renderizada, não o da extração | Garante que o deslocamento guardado corresponde exatamente ao que o usuário selecionou na tela |

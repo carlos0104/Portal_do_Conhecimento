@@ -127,9 +127,13 @@ Conferir em 1366, 900, 640 e 400 px de largura. A página nunca rola na horizont
 | `.docx` com imagem | Imagem exibida ou omitida com aviso, nunca quebra |
 | Arquivo corrompido | Mensagem clara, sem tela branca |
 
-- **Teste de privacidade (RN-005):** abrir o PDF, gravar as requisições no DevTools, confirmar que nenhuma carrega conteúdo do arquivo.
-- Destacar, recarregar e conferir que o destaque volta na posição exata. Forçar reancoragem alterando o texto extraído e conferir o aviso de destaque órfão.
+- **Teste de privacidade (RN-005):** interceptar `fetch` e `XMLHttpRequest`, abrir o arquivo e confirmar que **nenhuma** requisição sai da máquina.
+- **Sanitização do `.docx`:** converter um HTML hostil (`<script>`, `onerror`, `<iframe>`, `href="javascript:"`) e confirmar que nada executa e que os links válidos sobrevivem.
+- Destacar, recarregar e conferir que o destaque volta na posição exata.
+- **Reancoragem:** gravar um destaque com deslocamento errado mas texto correto — tem que voltar no lugar certo. Com texto inexistente, tem que virar órfão declarado, nunca destaque no trecho errado.
 - Simular cota cheia e conferir o aviso em 80%.
+
+> **Atenção ao ambiente de teste.** O navegador embutido roda com o painel oculto, e nesse estado o `requestAnimationFrame` não dispara. O PDF.js depende dele para desenhar no canvas, então **a pintura da página não pode ser verificada por lá** — aparece em branco mesmo com o código correto. Tudo o que não depende de pintura (extração, camada de texto, ancoragem, destaques, Word, privacidade) é verificável normalmente. O desenho precisa de conferência no navegador do dono.
 
 ### Etapa 10 — Compreensão
 - V-1 a V-6.

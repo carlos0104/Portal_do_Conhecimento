@@ -19,6 +19,7 @@ Nada aqui é compromisso: é memória. Cada item vira etapa só por decisão do 
 | B-08 | **PWA com service worker** | Etapa 1 | Complexidade de cache e invalidação antes da v1 estar estável | Depois da Etapa 16, se o uso no celular pedir offline completo |
 | B-09 | **Revisar as horas dos módulos com dado real** | Etapa 1 (Q-05) | As 1.418 h são estimativa; só o uso dirá | Após 4 semanas de uso real do portal |
 | B-11 | **Links que recusam automação** | Etapa 6 | `exercism.org`, `leetcode.com` e `manager-tools.com` devolvem 403 para verificador automático. Provavelmente abrem normalmente no navegador, mas **não foi possível confirmar** — o navegador de teste bloqueia navegação externa | Conferir manualmente ao usar os módulos que os citam |
+| B-12 | **Conferir o desenho do PDF no navegador de verdade** | Etapa 9 | O navegador de teste desta sessão roda com o painel oculto (`document.hidden`), e nesse estado o `requestAnimationFrame` nunca dispara. O PDF.js depende dele para pintar no canvas, então **a renderização visual do PDF não pôde ser verificada aqui**. Todo o resto do leitor foi validado: extração, ancoragem, destaques, Word, sanitização e privacidade | Abrir um PDF no seu Chrome e confirmar que a página aparece e que o texto fica selecionável sobre ela |
 
 ---
 
