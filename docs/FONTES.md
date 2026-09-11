@@ -89,3 +89,38 @@ Se Gutendex passar, o portal ganha uma quinta fonte, com texto integral de domí
 ## 6. Fontes do Gerador de trilhas (Etapa 12)
 
 Ainda não testadas nesta etapa: Wikipédia (`pt.wikipedia.org/w/api.php`, CORS via `origin=*`) e as fontes curadas por tema. Serão validadas na Etapa 12 seguindo o mesmo procedimento e registradas aqui.
+
+---
+
+## 7. Reteste na Etapa 8 (11/09/2026)
+
+Executado por `node tools/testa-fontes.js`, na mesma rede corporativa, com `Origin: https://carlos0104.github.io`.
+Desta vez o teste também confere o **formato da resposta**, não só o status.
+
+| Fonte | HTTP | CORS | Tempo | Formato | Veredito |
+|---|---|---|---|---|---|
+| Open Library | 200 | `*` | 3,6 s | ok | **Em uso** |
+| Internet Archive | 200 | `*` | 0,7 s | ok | **Em uso** |
+| Crossref | 200 | `*` | 1,1 s | ok | **Em uso** |
+| Google Books | 429 | reflete origem | 1,2 s | — | **Em uso, com falha esperada nesta rede** |
+| Gutendex | timeout | — | 15,2 s | — | Pendente (B-04) |
+
+### Prova no navegador, que é o que vale
+
+O teste em Node não prova CORS: só o navegador aplica a política de origem. A busca real, feita no portal:
+
+| Busca | Resultado |
+|---|---|
+| autor "Kahneman" | 19 livros em 1,1 s — Open Library 12, Internet Archive 12, Crossref 1, Google Books em limite |
+| título "estatistica", português | 22 livros, todos em pt |
+| autor "machado de assis", só baixável | 14 livros, todos com link de download |
+| termo sem resultado | 0 livros, 3 fontes responderam, sem erro |
+| uma fonte derrubada de propósito | 11 livros das demais, a que caiu é nomeada na tela |
+| todas as fontes derrubadas | 0 livros, aviso claro, nenhuma exceção |
+
+### Ajustes feitos por causa do que o teste real mostrou
+
+1. **Internet Archive ordenado por downloads.** Sem ordenação, a primeira página vinha cheia de material sem valor (arquivos de teste de repositório). Com `sort[]=downloads desc`, os resultados passaram a ser livros de verdade.
+2. **Desduplicação por sobrenome normalizado.** Cada fonte escreve o autor de um jeito: `Daniel Kahneman`, `Kahneman, Daniel, 1934-` e `Kahneman, Daniel, 1934- author`. Com a regra anterior, o mesmo livro aparecia três vezes.
+3. **Descrição curta descartada.** O campo `description` do Archive às vezes traz descrição física (`499 p. ; 24 cm`) em vez de sinopse.
+4. **HTTP 429 é estado próprio, não falha.** O Google Books aparece na tela como "limite de consultas atingido nesta rede", e não como erro — porque não é.

@@ -457,3 +457,5 @@ Detalhamento dos tokens: Etapa 3.
 | 10/09/2026 | Criado `js/views.js` | `ui.js` acumularia componentes genericos e telas inteiras; separar mantem os dois legiveis |
 | 10/09/2026 | Criado `PDC.trilhas` em `core.js` | Os arquivos de conteudo precisam de um registro que exista antes deles na fila de carregamento |
 | 10/09/2026 | Criado `js/trilhas/exemplo.js` | Conteudo de demonstracao da Etapa 5. **Sai do `index.html` na Etapa 6** |
+| 11/09/2026 | `js/exercicios.js` e `js/biblioteca.js` trazem a própria tela | Módulo grande com interface própria mantém `views.js` legível; mesmo padrão dos dois |
+| 11/09/2026 | Campo `tambemEm` no objeto Livro | Guarda as outras fontes em que o mesmo livro apareceu, depois da desduplicação |

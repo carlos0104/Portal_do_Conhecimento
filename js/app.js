@@ -172,8 +172,7 @@
     });
 
     PDC.rota.registrar("biblioteca", function () {
-      trocarConteudo(ui.emConstrucao("Biblioteca", 8,
-        "Busca de livros por titulo e autor nas fontes abertas, e sua estante."), "Biblioteca");
+      trocarConteudo(PDC.biblioteca.tela(), "Biblioteca");
     });
 
     PDC.rota.registrar("livro/:id", function (p) {
